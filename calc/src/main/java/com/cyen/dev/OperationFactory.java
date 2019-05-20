@@ -15,7 +15,7 @@ public class OperationFactory {
 
     }
 
-    public Operation createOperation(String type) {
+    public static Operation createOperation(String type) {
         if (OperationType.ADDITION.getSign().equals(type)) {
             return new AdditionOperation();
         } else if (OperationType.SUBTRACTION.getSign().equals(type)) {

@@ -7,5 +7,11 @@ package com.cyen.dev;
  * @date: 2019-05-16
  */
 public interface CalcHandler {
+    /**
+     * 计算结果
+     *
+     * @param st
+     * @return 计算结果
+     */
     double calc(String st);
 }

@@ -6,27 +6,54 @@ package com.cyen.dev;
  */
 public enum OperationType {
 
-    ADDITION("+", "加"),
-    SUBTRACTION("-", "减"),
-    MULTIPLICATION("*", "乘"),
-    DIVISION("/", "除"),
-    LPARENTHESIS("(", "左括号"),
-    RPARENTHESIS(")", "右括号"),
-    DOT(".", "小数点");
+    /**
+     * 加
+     */
+    ADDITION('+', "加"),
 
-    private String sign;
+    /**
+     * 减
+     */
+    SUBTRACTION('-', "减"),
+
+    /**
+     * 乘
+     */
+    MULTIPLICATION('*', "乘"),
+
+    /**
+     * 除
+     */
+    DIVISION('/', "除"),
+
+    /**
+     * 左括号
+     */
+    LPARENTHESIS('(', "左括号"),
+
+    /**
+     * 右括号
+     */
+    RPARENTHESIS(')', "右括号"),
+
+    /**
+     * 小数点
+     */
+    DOT('.', "小数点");
+
+    private char sign;
     private String desc;
 
-    OperationType(String sign, String desc) {
+    OperationType(char sign, String desc) {
         this.sign = sign;
         this.desc = desc;
     }
 
-    public String getSign() {
+    public char getSign() {
         return sign;
     }
 
-    public void setSign(String sign) {
+    public void setSign(char sign) {
         this.sign = sign;
     }
 
@@ -36,5 +63,21 @@ public enum OperationType {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public static boolean isAddAndSub(char c) {
+        if (c == ADDITION.sign
+                || c == SUBTRACTION.sign) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isMulAndDiv(char c) {
+        if (c == MULTIPLICATION.sign
+                || c == DIVISION.sign) {
+            return true;
+        }
+        return false;
     }
 }
