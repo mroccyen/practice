@@ -12,28 +12,21 @@ import com.cyen.dev.OperationType;
 public class CacheHandler implements CalcHandler {
 
     private CalcCache calcCache = new CalcCache();
-    private StringBuffer dotValue = new StringBuffer();
 
     @Override
     public double calc(String st) {
         for (int i = 0; i < st.toCharArray().length; i++) {
-            //右括号
-            if (st.charAt(i) == OperationType.RPARENTHESIS.getSign()) {
-
+            char s = st.charAt(i);
+            if (OperationType.isAddAndSub(s) || OperationType.isMulAndDiv(s)) {
+                calcCache.getSigns().push(s);
             } else {
-                char s = st.charAt(i);
-                if (OperationType.isAddAndSub(s)
-                        || OperationType.isMulAndDiv(s)) {
-                    if (dotValue.capacity() != 0) {
-                        calcCache.getValues().add(Double.valueOf(dotValue.toString()));
-                    }
-                    calcCache.getSigns().add(s);
-                    dotValue = new StringBuffer();
-                } else {
-                    dotValue.append(s);
-                }
+                calcCache.getValues().push(Double.valueOf(String.valueOf(s)));
             }
         }
         return 0;
+    }
+
+    public CalcCache getCalcCache() {
+        return calcCache;
     }
 }

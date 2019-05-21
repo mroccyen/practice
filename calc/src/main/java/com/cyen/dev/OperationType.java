@@ -65,6 +65,12 @@ public enum OperationType {
         this.desc = desc;
     }
 
+    /**
+     * 加号或者减号
+     *
+     * @param c
+     * @return
+     */
     public static boolean isAddAndSub(char c) {
         if (c == ADDITION.sign
                 || c == SUBTRACTION.sign) {
@@ -73,11 +79,37 @@ public enum OperationType {
         return false;
     }
 
+    /**
+     * 乘号或者除号
+     *
+     * @param c
+     * @return
+     */
     public static boolean isMulAndDiv(char c) {
         if (c == MULTIPLICATION.sign
                 || c == DIVISION.sign) {
             return true;
         }
         return false;
+    }
+
+    /**
+     * 左括号
+     *
+     * @param c
+     * @return
+     */
+    public static boolean isLeftParenthesis(char c) {
+        return c == LPARENTHESIS.sign;
+    }
+
+    /**
+     * 右括号
+     *
+     * @param c
+     * @return
+     */
+    public static boolean isRightParenthesis(char c) {
+        return c == RPARENTHESIS.sign;
     }
 }

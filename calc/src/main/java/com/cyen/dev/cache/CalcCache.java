@@ -35,4 +35,21 @@ public class CalcCache {
     public Stack<Character> getSigns() {
         return signs;
     }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    @Override
+    public String toString() {
+        return "CalcCache{" +
+                "values=" + values +
+                ", signs=" + signs +
+                ", priority=" + priority +
+                '}';
+    }
 }
