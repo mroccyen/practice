@@ -32,7 +32,7 @@ public class OperationService {
 
     public static void main(String[] args) {
         CacheHandler handler = new CacheHandler();
-        handler.calc(scanner(""));
-        System.out.println(handler.getCalcCache().toString());
+        double result = handler.calc(scanner("计算表达式"));
+        System.out.println("计算结果为：" + result);
     }
 }

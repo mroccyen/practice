@@ -66,31 +66,43 @@ public enum OperationType {
     }
 
     /**
-     * 加号或者减号
+     * 加号
      *
      * @param c
      * @return
      */
-    public static boolean isAddAndSub(char c) {
-        if (c == ADDITION.sign
-                || c == SUBTRACTION.sign) {
-            return true;
-        }
-        return false;
+    public static boolean isAdd(char c) {
+        return c == ADDITION.sign;
     }
 
     /**
-     * 乘号或者除号
+     * 减号
      *
      * @param c
      * @return
      */
-    public static boolean isMulAndDiv(char c) {
-        if (c == MULTIPLICATION.sign
-                || c == DIVISION.sign) {
-            return true;
-        }
-        return false;
+    public static boolean isSub(char c) {
+        return c == SUBTRACTION.sign;
+    }
+
+    /**
+     * 乘号
+     *
+     * @param c
+     * @return
+     */
+    public static boolean isMul(char c) {
+        return c == MULTIPLICATION.sign;
+    }
+
+    /**
+     * 除号
+     *
+     * @param c
+     * @return
+     */
+    public static boolean isDiv(char c) {
+        return c == DIVISION.sign;
     }
 
     /**

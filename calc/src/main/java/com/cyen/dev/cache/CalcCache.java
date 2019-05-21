@@ -23,21 +23,33 @@ public class CalcCache {
     private int priority;
 
     public CalcCache() {
-        this.values = new Stack<>();
-        this.signs = new Stack<>();
+        this.values = new Stack<Double>();
+        this.signs = new Stack<Character>();
         this.priority = -1;
     }
 
-    public Stack<Double> getValues() {
-        return values;
+    public int valuesSize() {
+        return this.values.size();
     }
 
-    public Stack<Character> getSigns() {
-        return signs;
+    public boolean signsEmpty() {
+        return this.signs.empty();
     }
 
-    public int getPriority() {
-        return priority;
+    public Double pushValue(Double v) {
+        return this.values.push(v);
+    }
+
+    public Double popValue() {
+        return this.values.pop();
+    }
+
+    public Character pushSign(Character c) {
+        return this.signs.push(c);
+    }
+
+    public Character popSign() {
+        return this.signs.pop();
     }
 
     public void setPriority(int priority) {
@@ -46,10 +58,22 @@ public class CalcCache {
 
     @Override
     public String toString() {
-        return "CalcCache{" +
+        return "栈值{" +
                 "values=" + values +
                 ", signs=" + signs +
-                ", priority=" + priority +
                 '}';
+    }
+
+    /**
+     * 检查优先级是否符合计算
+     *
+     * @param currentPriority 当前优先级
+     * @return
+     */
+    public boolean checkPriority(int currentPriority) {
+        if (priority == -1) {
+            return false;
+        }
+        return this.priority == 1 && currentPriority == 0;
     }
 }

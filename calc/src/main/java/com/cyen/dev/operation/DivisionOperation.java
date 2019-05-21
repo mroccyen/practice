@@ -7,8 +7,7 @@ import com.cyen.dev.Operation;
  * @date: 2019-05-16
  */
 public class DivisionOperation implements Operation {
-    @Override
     public double calc(double v1, double v2) {
-        return 0;
+        return v1 / v2;
     }
 }
