@@ -54,7 +54,10 @@ public class CalcSupport {
             double v3 = calcCache.popValue();
             c.pushValue(v3);
         }
-        calcCache.pushSign(ch);
+        if (!OperationType.isMul(ch)
+                && !OperationType.isDiv(ch)) {
+            calcCache.pushSign(ch);
+        }
 
         calcCache.pushValue(calcTempResult(c));
     }

@@ -1,7 +1,6 @@
 package com.cyen.dev.cache;
 
 import java.util.LinkedList;
-import java.util.Stack;
 
 /**
  * @author qingsp

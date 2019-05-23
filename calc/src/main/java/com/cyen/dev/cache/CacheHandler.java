@@ -5,7 +5,7 @@ import com.cyen.dev.OperationType;
 
 /**
  * 进行解析处理
- * 例如：4*3/6+(6-4)*2-7、(6*1+2*3-1+5*2-1)-9
+ * 例如：4*3/6+(6-4)*2-7=-1、(6*1+2*3-1+5*2-1)-9=11、(6+4)*2/(1+3)=5、(6+4)+8/(1+3)=12
  *
  * @author qingsp
  * @date: 2019-05-16
@@ -24,6 +24,7 @@ public class CacheHandler extends CalcSupport implements CalcHandler {
         //最后如果为优先级高的符号
         //加上0可以将末尾的优先级高的符号进行计算
         st += "+0";
+        System.out.println("计算表达式：" + st);
         //处理表达式
         for (int i = 0; i < st.toCharArray().length; i++) {
             char s = st.charAt(i);
@@ -42,6 +43,8 @@ public class CacheHandler extends CalcSupport implements CalcHandler {
                 //计算括号里面的值
                 calcParenthesis(calcCache);
             } else if (OperationType.isLeftParenthesis(s)) {
+                //左括号重置优先级标志
+                calcCache.setPriority(0);
                 calcCache.pushSign(s);
             } else {
                 calcCache.pushValue(Double.valueOf(String.valueOf(s)));
