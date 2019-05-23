@@ -1,5 +1,6 @@
 package com.cyen.dev.cache;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -10,12 +11,12 @@ public class CalcCache {
     /**
      * 用于存储值
      */
-    private Stack<Double> values;
+    private LinkedList<Double> values;
 
     /**
      * 用于存储符号
      */
-    private Stack<Character> signs;
+    private LinkedList<Character> signs;
 
     /**
      * 优先级，0：代表+和-的级别，1：代表*和/的优先级
@@ -23,8 +24,8 @@ public class CalcCache {
     private int priority;
 
     public CalcCache() {
-        this.values = new Stack<Double>();
-        this.signs = new Stack<Character>();
+        this.values = new LinkedList<Double>();
+        this.signs = new LinkedList<Character>();
         this.priority = -1;
     }
 
@@ -33,23 +34,35 @@ public class CalcCache {
     }
 
     public boolean signsEmpty() {
-        return this.signs.empty();
+        return this.signs.size() == 0;
     }
 
-    public Double pushValue(Double v) {
-        return this.values.push(v);
+    public void pushValue(Double v) {
+        this.values.push(v);
     }
 
     public Double popValue() {
         return this.values.pop();
     }
 
-    public Character pushSign(Character c) {
-        return this.signs.push(c);
+    public void addLastValue(Double v) {
+        this.values.addLast(v);
+    }
+
+    public Double removeLastValue() {
+        return this.values.removeLast();
+    }
+
+    public void pushSign(Character c) {
+        this.signs.push(c);
     }
 
     public Character popSign() {
         return this.signs.pop();
+    }
+
+    public Character removeLastSign() {
+        return this.signs.removeLast();
     }
 
     public void setPriority(int priority) {
@@ -58,7 +71,7 @@ public class CalcCache {
 
     @Override
     public String toString() {
-        return "栈值{" +
+        return "栈 {" +
                 "values=" + values +
                 ", signs=" + signs +
                 '}';

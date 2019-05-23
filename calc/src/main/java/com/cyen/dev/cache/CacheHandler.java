@@ -38,6 +38,7 @@ public class CacheHandler implements CalcHandler {
                 calcCache.pushValue(Double.valueOf(String.valueOf(s)));
             }
         }
+        //计算最终结果
         return calcResult(this.calcCache);
     }
 
@@ -64,15 +65,15 @@ public class CacheHandler implements CalcHandler {
         if (!calcCache.signsEmpty() && ch != 0) {
             calcCache.pushSign(ch);
         }
-        calcCache.pushValue(calcResult(c));
+        calcCache.pushValue(calcTempResult(c));
     }
 
     /**
-     * 计算结果
+     * 计算临时结果
      *
      * @return
      */
-    private double calcResult(CalcCache calcCache) {
+    private double calcTempResult(CalcCache calcCache) {
         //打印每次的信息
         System.out.println(calcCache.toString());
         //获取栈大小
@@ -90,6 +91,34 @@ public class CacheHandler implements CalcHandler {
             double v2 = calcCache.popValue();
             double v = OperationFactory.createOperation(o).calc(v1, v2);
             calcCache.pushValue(v);
+            //递归
+            return calcTempResult(calcCache);
+        }
+    }
+
+    /**
+     * 计算最终结果
+     *
+     * @return
+     */
+    private double calcResult(CalcCache calcCache) {
+        //打印每次的信息
+        System.out.println(calcCache.toString());
+        //获取栈大小
+        int size = calcCache.valuesSize();
+        if (size == 1) {
+            return calcCache.removeLastValue();
+        } else if (size == 2) {
+            double v1 = calcCache.removeLastValue();
+            char o = calcCache.removeLastSign();
+            double v2 = calcCache.removeLastValue();
+            return OperationFactory.createOperation(o).calc(v1, v2);
+        } else {
+            double v1 = calcCache.removeLastValue();
+            char o = calcCache.removeLastSign();
+            double v2 = calcCache.removeLastValue();
+            double v = OperationFactory.createOperation(o).calc(v1, v2);
+            calcCache.addLastValue(v);
             //递归
             return calcResult(calcCache);
         }
