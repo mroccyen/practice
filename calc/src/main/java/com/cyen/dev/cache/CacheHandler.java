@@ -26,7 +26,7 @@ public class CacheHandler implements CalcHandler {
                 if (calcCache.checkPriority(0)) {
                     //如果出现优先级低的符号
                     //计算之前符号优先级高的值
-                    calc();
+                    calc(calcCache);
                 }
                 calcCache.setPriority(0);
                 calcCache.pushSign(s);
@@ -45,7 +45,7 @@ public class CacheHandler implements CalcHandler {
     /**
      * 计算优先级高的值
      */
-    private void calc() {
+    private void calc(CalcCache calcCache) {
         CalcCache c = new CalcCache();
 
         double v2 = calcCache.popValue();
