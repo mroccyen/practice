@@ -68,6 +68,10 @@ public class CalcCache {
         this.priority = priority;
     }
 
+    public int getPriority() {
+        return priority;
+    }
+
     @Override
     public String toString() {
         return "栈 {" +
