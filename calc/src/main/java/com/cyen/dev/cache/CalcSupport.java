@@ -55,7 +55,8 @@ public class CalcSupport {
             c.pushValue(v3);
         }
         if (!OperationType.isMul(ch)
-                && !OperationType.isDiv(ch)) {
+                && !OperationType.isDiv(ch)
+                && ch != 0) {
             calcCache.pushSign(ch);
         }
 
