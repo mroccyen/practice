@@ -4,7 +4,7 @@ package com.cyenq.algorithm.sort;
  * 快速排序
  *
  * @author qingsp
- * @date: 2019-07-15
+ * @date 2019-07-15
  */
 public class QuickSort {
 

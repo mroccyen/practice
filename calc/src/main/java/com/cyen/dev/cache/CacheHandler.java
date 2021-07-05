@@ -29,6 +29,7 @@ public class CacheHandler extends CalcSupport implements CalcHandler {
      * @param st 表达式
      * @return 计算结果
      */
+    @Override
     public double calc(String st) {
         //最后如果为优先级高的符号
         //加上0可以将末尾的优先级高的符号进行计算
