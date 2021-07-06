@@ -21,6 +21,8 @@ public class BIOServerMultiThread {
 			System.out.println("等待客户端连接");
 			while (true) {
 				Socket client = server.accept();
+				//这样主线程不会阻塞在等待数据上面，每个子线程会阻塞等待客户端发送数据
+				//把处理数据交于每个子线程处理，主线程只处理客户端的连接
 				executorService.execute(() -> {
 					try {
 						System.out.println("接收到客户端连接：" + client.getRemoteSocketAddress());

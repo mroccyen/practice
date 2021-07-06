@@ -9,7 +9,7 @@ import java.net.Socket;
  * @date 2021/7/2 17:22
  * @since 标果工厂-小白杏
  */
-public class BIOServer {
+public class BIOServerSingleThread {
 	public static void main(String[] args) {
 		byte[] buffer = new byte[1024];
 		try (ServerSocket server = new ServerSocket(7777)) {
@@ -20,6 +20,7 @@ public class BIOServer {
 
 				System.out.println("等待客户端发送数据");
 				//接受客户端的数据，这时会阻塞服务器
+				//如果这时有新的连接进来，会被阻塞
 				client.getInputStream().read(buffer);
 				String content = new String(buffer);
 				System.out.println("接收到客户端数据:" + content);
