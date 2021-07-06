@@ -18,13 +18,14 @@ public class BIOServer {
 				Socket client = server.accept();
 				System.out.println("接收到客户端连接：" + client.getRemoteSocketAddress());
 
-				//发送数据给客户端
-				client.getOutputStream().write("你好，我是服务端发送的数据...".getBytes());
-
-				//接受客户端的数据
+				System.out.println("等待客户端发送数据");
+				//接受客户端的数据，这时会阻塞服务器
 				client.getInputStream().read(buffer);
 				String content = new String(buffer);
 				System.out.println("接收到客户端数据:" + content);
+
+				//发送数据给客户端
+				client.getOutputStream().write("你好，我是服务端发送的数据...".getBytes());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
