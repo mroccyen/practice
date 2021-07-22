@@ -1,4 +1,4 @@
-package com.cyen.practice.cjlibproxy;
+package com.cyen.practice.cjlibproxy.obj;
 
 /**
  * @author qingshanpeng
@@ -8,6 +8,7 @@ package com.cyen.practice.cjlibproxy;
 public class Car {
 
 	public String getColor() {
+		System.out.println("default");
 		return "default";
 	}
 

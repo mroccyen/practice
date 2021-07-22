@@ -1,6 +1,6 @@
-package com.cyen.practice.cjlibproxy.callback;
+package com.cyen.practice.cjlibproxy;
 
-import com.cyen.practice.cjlibproxy.Car;
+import com.cyen.practice.cjlibproxy.obj.Car;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.InvocationHandler;
 

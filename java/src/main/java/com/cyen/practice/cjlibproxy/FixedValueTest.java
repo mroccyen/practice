@@ -1,6 +1,6 @@
-package com.cyen.practice.cjlibproxy.callback;
+package com.cyen.practice.cjlibproxy;
 
-import com.cyen.practice.cjlibproxy.Food;
+import com.cyen.practice.cjlibproxy.obj.Food;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.FixedValue;
 

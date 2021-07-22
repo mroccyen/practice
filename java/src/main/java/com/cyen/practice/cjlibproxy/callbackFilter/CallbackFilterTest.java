@@ -1,6 +1,6 @@
 package com.cyen.practice.cjlibproxy.callbackFilter;
 
-import com.cyen.practice.cjlibproxy.Car;
+import com.cyen.practice.cjlibproxy.obj.Car;
 import net.sf.cglib.proxy.*;
 
 import java.lang.reflect.Method;
