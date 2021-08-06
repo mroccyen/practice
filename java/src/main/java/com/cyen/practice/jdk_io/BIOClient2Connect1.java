@@ -1,4 +1,4 @@
-package com.cyen.practice.io;
+package com.cyen.practice.jdk_io;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @date 2021/7/2 17:31
  * @since 标果工厂-小白杏
  */
-public class BIOClient2Connect2 {
+public class BIOClient2Connect1 {
 	public static void main(String[] args) {
 		byte[] buffer = new byte[1024];
 		try {

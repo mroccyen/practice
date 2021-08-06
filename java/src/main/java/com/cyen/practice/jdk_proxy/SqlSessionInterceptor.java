@@ -19,7 +19,7 @@ public class SqlSessionInterceptor implements InvocationHandler {
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		SqlSession sqlSession = "default".equals(flag) ? new DefaultSqlSession() : new SampleSqlSession();
-
+		System.out.println("this is proxy print...");
 		return method.invoke(sqlSession, args);
 	}
 }
