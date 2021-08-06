@@ -1,6 +1,6 @@
-package com.cyen.practice.cjlibproxy.callback;
+package com.cyen.practice.cjlib_proxy.callback;
 
-import com.cyen.practice.cjlibproxy.obj.Food;
+import com.cyen.practice.cjlib_proxy.obj.Food;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 

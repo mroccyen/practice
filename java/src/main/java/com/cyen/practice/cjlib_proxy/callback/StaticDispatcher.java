@@ -1,4 +1,4 @@
-package com.cyen.practice.cjlibproxy.callback;
+package com.cyen.practice.cjlib_proxy.callback;
 
 import net.sf.cglib.proxy.Dispatcher;
 

@@ -1,4 +1,4 @@
-package com.cyen.practice.cjlibproxy.obj;
+package com.cyen.practice.cjlib_proxy.obj;
 
 /**
  * @author qingshanpeng

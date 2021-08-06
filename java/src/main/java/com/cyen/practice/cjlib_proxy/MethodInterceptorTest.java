@@ -1,11 +1,11 @@
-package com.cyen.practice.cjlibproxy;
+package com.cyen.practice.cjlib_proxy;
 
-import com.cyen.practice.cjlibproxy.callback.FoodInterceptor;
-import com.cyen.practice.cjlibproxy.callback.ProxyCallbackFilter;
-import com.cyen.practice.cjlibproxy.callback.StaticDispatcher;
-import com.cyen.practice.cjlibproxy.callback.TargetInterceptor;
-import com.cyen.practice.cjlibproxy.obj.Car;
-import com.cyen.practice.cjlibproxy.obj.Food;
+import com.cyen.practice.cjlib_proxy.callback.FoodInterceptor;
+import com.cyen.practice.cjlib_proxy.callback.ProxyCallbackFilter;
+import com.cyen.practice.cjlib_proxy.callback.StaticDispatcher;
+import com.cyen.practice.cjlib_proxy.callback.TargetInterceptor;
+import com.cyen.practice.cjlib_proxy.obj.Car;
+import com.cyen.practice.cjlib_proxy.obj.Food;
 import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;
 
