@@ -15,4 +15,8 @@ public class Car {
 	public void print() {
 		System.out.println("this is a car...");
 	}
+
+	public void print1() {
+		System.out.println("this is a car1...");
+	}
 }

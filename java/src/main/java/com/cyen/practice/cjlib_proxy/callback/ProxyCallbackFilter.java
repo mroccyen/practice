@@ -12,6 +12,6 @@ import java.lang.reflect.Method;
 public class ProxyCallbackFilter implements CallbackFilter {
 	@Override
 	public int accept(Method method) {
-		return 2;
+		return 0;
 	}
 }
