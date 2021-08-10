@@ -1,4 +1,4 @@
-package com.cyen.practice.asm_bytecode;
+package com.cyen.practice.asm_bytecode.classReader;
 
 import org.objectweb.asm.*;
 
@@ -94,7 +94,7 @@ public class MyClassVisitor extends ClassVisitor {
 	}
 
 	public static void main(String[] args) throws IOException {
-		ClassReader classReader = new ClassReader("java.lang.String");
+		ClassReader classReader = new ClassReader("com.cyen.practice.asm_bytecode.classReader.Foo");
 		classReader.accept(new MyClassVisitor(Opcodes.ASM7), 0);
 	}
 }
