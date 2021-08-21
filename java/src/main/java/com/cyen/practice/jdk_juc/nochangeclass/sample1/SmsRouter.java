@@ -2,7 +2,7 @@ package com.cyen.practice.jdk_juc.nochangeclass.sample1;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.TreeMap;
 
 /**
  * @author qingshanpeng
@@ -32,7 +32,7 @@ public class SmsRouter {
         return smsRouterInfoMap.deepCopy();
     }
 
-    private static class SmsRouterInfoMap extends ConcurrentHashMap<Integer, SmsInfo> {
+    private static class SmsRouterInfoMap extends TreeMap<Integer, SmsInfo> {
 
         /**
          * 原始短信服务器信息
@@ -76,7 +76,7 @@ public class SmsRouter {
         }
 
         private Map<Integer, SmsInfo> deepCopy(Map<Integer, SmsInfo> smsInfoMap) {
-            Map<Integer, SmsInfo> newMap = new ConcurrentHashMap<>(smsInfoMap.size());
+            Map<Integer, SmsInfo> newMap = new TreeMap<>();
             for (Map.Entry<Integer, SmsInfo> entry : smsInfoMap.entrySet()) {
                 newMap.put(entry.getKey(), new SmsInfo(entry.getValue()));
             }
