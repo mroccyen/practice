@@ -22,7 +22,7 @@ public class Main {
             executorService1.execute(() -> {
                 SmsRouter router = smsRouterManager.getSmsRouter();
 
-                Map<Integer, SmsInfo> smsInfoMap1 = router.getSmsInfo();
+                Map<Integer, SmsInfo> smsInfoMap1 = router.getSmsInfoMap();
                 SmsInfo smsInfo = smsInfoMap1.get(3);
                 smsInfo.setUrl("www.feichi.yun.com");
                 smsInfo.setDataSize(100L);
@@ -44,7 +44,7 @@ public class Main {
             executorService2.execute(() -> {
                 SmsRouter router = smsRouterManager.getSmsRouter();
 
-                Map<Integer, SmsInfo> smsInfoMap1 = router.getSmsInfo();
+                Map<Integer, SmsInfo> smsInfoMap1 = router.getSmsInfoMap();
                 smsInfoMap1.put(4, new SmsInfo("www.youdao.yun.com", 200L));
                 smsInfoMap1.put(5, new SmsInfo("www.wangyi.yun.com", 300L));
                 System.out.println("-----smsInfoMap2-----");
@@ -63,9 +63,12 @@ public class Main {
 
         SmsRouter router = smsRouterManager.getSmsRouter();
         System.out.println("-----smsInfoMap3-----");
-        Map<Integer, SmsInfo> smsInfoMap2 = router.getSmsInfo();
+        Map<Integer, SmsInfo> smsInfoMap2 = router.getSmsInfoMap();
         for (Map.Entry<Integer, SmsInfo> entry : smsInfoMap2.entrySet()) {
             System.out.println(Thread.currentThread().getName() + " -> " + entry.getValue().getUrl() + " " + entry.getValue().getDataSize());
         }
+
+        executorService1.shutdown();
+        executorService2.shutdown();
     }
 }
