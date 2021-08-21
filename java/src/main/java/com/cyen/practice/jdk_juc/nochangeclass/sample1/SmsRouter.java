@@ -1,6 +1,5 @@
 package com.cyen.practice.jdk_juc.nochangeclass.sample1;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -11,34 +10,52 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class SmsRouter {
 
-    private final Map<Integer, SmsInfo> smsInfoMap;
+    protected static final DatabaseUtils DATABASE_UTILS = new DatabaseUtils();
+
+    private final SmsRouterInfo smsRouterInfo;
 
     public SmsRouter() {
-        this.smsInfoMap = loadSmsInfoFromDatabase();
+        this.smsRouterInfo = new SmsRouterInfo(loadSmsInfoFromDatabase());
     }
 
+    /**
+     * 从数据库中加载数据
+     *
+     * @return 数据库中存储的短信信息
+     */
     private Map<Integer, SmsInfo> loadSmsInfoFromDatabase() {
-        Map<Integer, SmsInfo> map = new ConcurrentHashMap<>();
-        map.put(1, new SmsInfo("www.tencent.yun.com", 120L));
-        map.put(2, new SmsInfo("www.aliyun.yun.com", 121L));
-        map.put(3, new SmsInfo("www.baidu.yun.com", 130L));
-
-        return map;
+        return DATABASE_UTILS.getSmsInfoFromDatabase();
     }
 
-    public Map<Integer, SmsInfo> getSmsInfoMap() {
-        //todo
-        //类似于写时复制
-        //每个线程拿到的这个值，都是原来值的一份拷贝
-        return Collections.unmodifiableMap(deep(smsInfoMap));
+    public Map<Integer, SmsInfo> getSmsInfo() {
+        return smsRouterInfo.getOriginDeepCopySmsInfoMap();
     }
 
-    private Map<Integer, SmsInfo> deep(Map<Integer, SmsInfo> smsInfoMap) {
-        Map<Integer, SmsInfo> newMap = new ConcurrentHashMap<>(smsInfoMap.size());
-        for (Map.Entry<Integer, SmsInfo> entry : smsInfoMap.entrySet()) {
-            newMap.put(entry.getKey(), new SmsInfo(entry.getValue()));
+    private static class SmsRouterInfo {
+
+        /**
+         * 原始短信服务器信息
+         */
+        private final Map<Integer, SmsInfo> originSmsInfoMap;
+
+        private SmsRouterInfo(Map<Integer, SmsInfo> originSmsInfoMap) {
+            this.originSmsInfoMap = originSmsInfoMap;
         }
 
-        return newMap;
+        public Map<Integer, SmsInfo> getOriginDeepCopySmsInfoMap() {
+            //todo
+            //类似于写时复制
+            //每个线程拿到的这个值，都是原来值的一份拷贝
+            return deepCopy(originSmsInfoMap);
+        }
+
+        private Map<Integer, SmsInfo> deepCopy(Map<Integer, SmsInfo> smsInfoMap) {
+            Map<Integer, SmsInfo> newMap = new ConcurrentHashMap<>(smsInfoMap.size());
+            for (Map.Entry<Integer, SmsInfo> entry : smsInfoMap.entrySet()) {
+                newMap.put(entry.getKey(), new SmsInfo(entry.getValue()));
+            }
+
+            return newMap;
+        }
     }
 }
