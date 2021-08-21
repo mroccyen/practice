@@ -1,6 +1,7 @@
 package com.cyen.practice.jdk_juc.nochangeclass.sample1;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -12,10 +13,10 @@ public class SmsRouter {
 
     protected static final DatabaseUtils DATABASE_UTILS = new DatabaseUtils();
 
-    private final SmsRouterInfo smsRouterInfo;
+    private final SmsRouterInfoMap smsRouterInfoMap;
 
     public SmsRouter() {
-        this.smsRouterInfo = new SmsRouterInfo(loadSmsInfoFromDatabase());
+        this.smsRouterInfoMap = new SmsRouterInfoMap(loadSmsInfoFromDatabase());
     }
 
     /**
@@ -28,25 +29,50 @@ public class SmsRouter {
     }
 
     public Map<Integer, SmsInfo> getSmsInfo() {
-        return smsRouterInfo.getOriginDeepCopySmsInfoMap();
+        return smsRouterInfoMap.deepCopy();
     }
 
-    private static class SmsRouterInfo {
+    private static class SmsRouterInfoMap extends ConcurrentHashMap<Integer, SmsInfo> {
 
         /**
          * 原始短信服务器信息
          */
-        private final Map<Integer, SmsInfo> originSmsInfoMap;
+        private final Map<Integer, SmsInfo> smsInfoMap;
 
-        private SmsRouterInfo(Map<Integer, SmsInfo> originSmsInfoMap) {
-            this.originSmsInfoMap = originSmsInfoMap;
-        }
-
-        public Map<Integer, SmsInfo> getOriginDeepCopySmsInfoMap() {
+        private SmsRouterInfoMap(Map<Integer, SmsInfo> originSmsInfoMap) {
             //todo
             //类似于写时复制
             //每个线程拿到的这个值，都是原来值的一份拷贝
-            return deepCopy(originSmsInfoMap);
+            this.smsInfoMap = deepCopy(originSmsInfoMap);
+            this.putAll(originSmsInfoMap);
+        }
+
+        @Override
+        public SmsInfo put(Integer key, SmsInfo value) {
+            smsInfoMap.put(key, value);
+            return value;
+        }
+
+        @Override
+        public SmsInfo get(Object key) {
+            return smsInfoMap.get(key);
+        }
+
+        @Override
+        public Set<Map.Entry<Integer, SmsInfo>> entrySet() {
+            return smsInfoMap.entrySet();
+        }
+
+        public Map<Integer, SmsInfo> getSmsInfoMap() {
+            return smsInfoMap;
+        }
+
+        public Map<Integer, SmsInfo> getOriginSmsInfoMap() {
+            return this;
+        }
+
+        private Map<Integer, SmsInfo> deepCopy() {
+            return deepCopy(this);
         }
 
         private Map<Integer, SmsInfo> deepCopy(Map<Integer, SmsInfo> smsInfoMap) {
