@@ -9,6 +9,12 @@ public class SmsRouterManager {
 
     private volatile SmsRouter instance;
 
+    /**
+     * 这里在读的的时候，可以读到旧值
+     * 因为getSmsRouter和resetSmsRouter不是互斥的
+     *
+     * @return SmsRouter
+     */
     public SmsRouter getSmsRouter() {
         if (instance == null) {
             synchronized (this) {
@@ -22,7 +28,10 @@ public class SmsRouterManager {
         return instance;
     }
 
-    public void resetSmsRouter() {
+    /**
+     * 主要用于读多写少场景，这里可以加synchronized，写操作不是瓶颈
+     */
+    public synchronized void resetSmsRouter() {
         instance = new SmsRouter();
     }
 }
