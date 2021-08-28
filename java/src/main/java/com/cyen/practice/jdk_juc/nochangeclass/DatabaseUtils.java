@@ -1,4 +1,4 @@
-package com.cyen.practice.jdk_juc.nochangeclass.sample1;
+package com.cyen.practice.jdk_juc.nochangeclass;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
