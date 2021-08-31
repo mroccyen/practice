@@ -19,5 +19,6 @@
         <module>leetcode</module>
         <module>spring</module>
         <module>java</module>
+        <module>ruyuan</module>
     </modules>
 </project>
