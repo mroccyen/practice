@@ -1,4 +1,4 @@
-package com.ruyuan.twelve.juc.week02;
+package com.ruyuan.twelve.juc.w02_guarded_suspension;
 
 /**
  * @author <a href="mailto:little@163.com">little</a>

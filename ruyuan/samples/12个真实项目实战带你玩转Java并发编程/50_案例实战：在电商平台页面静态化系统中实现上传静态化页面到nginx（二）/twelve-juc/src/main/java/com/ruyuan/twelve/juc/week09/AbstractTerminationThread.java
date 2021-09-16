@@ -1,7 +1,7 @@
 package com.ruyuan.twelve.juc.week09;
 
-import com.ruyuan.twelve.juc.week03.Termination;
-import com.ruyuan.twelve.juc.week03.TerminationToken;
+import com.ruyuan.twelve.juc.w03_two_phase_termination.Termination;
+import com.ruyuan.twelve.juc.w03_two_phase_termination.TerminationToken;
 
 /**
  * @author <a href="mailto:little@163.com">little</a>

@@ -1,4 +1,4 @@
-package com.ruyuan.twelve.juc.week01.demo;
+package com.ruyuan.twelve.juc.w01_final_class.demo;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

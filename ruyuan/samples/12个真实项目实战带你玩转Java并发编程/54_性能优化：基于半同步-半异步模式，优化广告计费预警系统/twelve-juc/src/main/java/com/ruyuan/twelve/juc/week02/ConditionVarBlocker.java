@@ -1,4 +1,4 @@
-package com.ruyuan.twelve.juc.week02;
+package com.ruyuan.twelve.juc.w02_guarded_suspension;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.locks.Condition;
