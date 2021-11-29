@@ -1,6 +1,6 @@
-package com.cyen.dev.operation;
+package com.cyen.dev.calcutor.operation;
 
-import com.cyen.dev.Operation;
+import com.cyen.dev.calcutor.Operation;
 
 /**
  * @author qingsp

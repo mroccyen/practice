@@ -1,6 +1,6 @@
-package com.cyen.dev;
+package com.cyen.dev.calcutor;
 
-import com.cyen.dev.cache.CacheHandler;
+import com.cyen.dev.calcutor.cache.CacheHandler;
 
 import java.util.Scanner;
 

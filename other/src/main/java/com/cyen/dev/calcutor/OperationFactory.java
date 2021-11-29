@@ -1,9 +1,9 @@
-package com.cyen.dev;
+package com.cyen.dev.calcutor;
 
-import com.cyen.dev.operation.AdditionOperation;
-import com.cyen.dev.operation.DivisionOperation;
-import com.cyen.dev.operation.MultiplicationOperation;
-import com.cyen.dev.operation.SubtractionOperation;
+import com.cyen.dev.calcutor.operation.AdditionOperation;
+import com.cyen.dev.calcutor.operation.DivisionOperation;
+import com.cyen.dev.calcutor.operation.MultiplicationOperation;
+import com.cyen.dev.calcutor.operation.SubtractionOperation;
 
 /**
  * @author qingsp
