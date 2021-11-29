@@ -1,4 +1,4 @@
-package com.ruyuan.twelve.juc.week04;
+package com.ruyuan.twelve.juc.w04_promise;
 
 
 import java.util.List;

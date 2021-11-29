@@ -1,4 +1,4 @@
-package com.ruyuan.twelve.juc.week03;
+package com.ruyuan.twelve.juc.w03_two_phase_termination;
 
 /**
  * @author <a href="mailto:little@163.com">little</a>

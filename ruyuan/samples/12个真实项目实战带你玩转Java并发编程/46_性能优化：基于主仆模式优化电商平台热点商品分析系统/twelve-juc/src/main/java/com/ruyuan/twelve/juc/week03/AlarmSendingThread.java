@@ -1,4 +1,4 @@
-package com.ruyuan.twelve.juc.week03;
+package com.ruyuan.twelve.juc.w03_two_phase_termination;
 
 import java.util.Objects;
 import java.util.concurrent.ArrayBlockingQueue;

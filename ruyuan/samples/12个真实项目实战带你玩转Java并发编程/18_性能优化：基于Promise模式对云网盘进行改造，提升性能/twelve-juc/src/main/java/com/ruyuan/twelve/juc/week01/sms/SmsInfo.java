@@ -1,4 +1,4 @@
-package com.ruyuan.twelve.juc.week01.sms;
+package com.ruyuan.twelve.juc.w01_final_class.sms;
 
 /**
  * @author <a href="mailto:little@163.com">little</a>

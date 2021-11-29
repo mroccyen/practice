@@ -1,4 +1,4 @@
-package com.ruyuan.twelve.juc.week04;
+package com.ruyuan.twelve.juc.w04_promise;
 
 /**
  * @author <a href="mailto:little@163.com">little</a>
