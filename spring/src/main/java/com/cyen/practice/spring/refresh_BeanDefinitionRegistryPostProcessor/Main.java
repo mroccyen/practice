@@ -1,8 +1,8 @@
 package com.cyen.practice.spring.refresh_BeanDefinitionRegistryPostProcessor;
 
+import com.cyen.practice.spring.aop_advice.Scanner;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.qingsp.refresh_getMergedBeanDefinition.Scanner;
 
 /**
  * @author qingsp

@@ -1,7 +1,7 @@
 package com.cyen.practice.spring.refresh_CustomAutowireConfigurer;
 
+import com.cyen.practice.spring.refresh_getMergedBeanDefinition.Scanner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.qingsp.refresh_getMergedBeanDefinition.Scanner;
 
 /**
  * @author qingsp

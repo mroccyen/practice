@@ -1,9 +1,9 @@
 package com.cyen.practice.spring.refresh_CustomEditorConfigurer;
 
+import com.cyen.practice.spring.refresh_getMergedBeanDefinition.Scanner;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.qingsp.refresh_getMergedBeanDefinition.Scanner;
 
 /**
  * @author qingsp

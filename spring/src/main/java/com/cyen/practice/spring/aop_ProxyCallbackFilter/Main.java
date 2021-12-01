@@ -13,6 +13,6 @@ public class Main {
 		context.register(Scanner.class);
 		context.refresh();
 
-		System.out.println(((Advised) context.getBean("a")).getAdvisorCount());
+		System.out.println(((Advised) context.getBean("a")).getAdvisors().length);
 	}
 }
