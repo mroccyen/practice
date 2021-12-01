@@ -15,7 +15,7 @@
     </properties>
 
     <modules>
-        <module>calc</module>
+        <module>other</module>
         <module>leetcode</module>
         <module>spring</module>
         <module>java</module>
