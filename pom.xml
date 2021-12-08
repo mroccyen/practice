@@ -21,5 +21,6 @@
         <module>java</module>
         <module>ruyuan</module>
         <module>qlexpress</module>
+        <module>antlr4</module>
     </modules>
 </project>
