@@ -20,7 +20,7 @@
         <module>spring</module>
         <module>java</module>
         <module>ruyuan</module>
-        <module>qlexpress</module>
+        <module>ruleengine</module>
         <module>antlr4</module>
     </modules>
 </project>
