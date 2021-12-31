@@ -1,0 +1,30 @@
+server:
+  shutdown: graceful
+  port: 9993
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 5m
+  profiles:
+    active: local
+  application:
+    name: client03
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.110.21:8848
+        heart-beat-interval: 1000
+        namespace: 7d78bb36-3c05-4010-99ec-4b7f162d366e
+        group: DEV_GROUP
+        ephemeral: true
+      config:
+        server-addr: http://192.168.110.21:8848
+        enabled: true #false:会根据spring.profiles.active读取本地文件
+        namespace: 7d78bb36-3c05-4010-99ec-4b7f162d366e
+        extension-configs:
+          - data-id: dev.yml
+            group: DEV_GROUP
+            refresh: true
+
+#log 注意:测试环境关闭控制台打印,配置启动参数上的java -jar -Dlogging.config=classpath:logback.xml jarname.jar
+logging:
+  config: classpath:${LOGBACK_FILE:logback-local.xml}

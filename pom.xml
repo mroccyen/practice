@@ -22,5 +22,6 @@
         <module>ruyuan</module>
         <module>ruleengine</module>
         <module>antlr4</module>
+        <module>nacos</module>
     </modules>
 </project>

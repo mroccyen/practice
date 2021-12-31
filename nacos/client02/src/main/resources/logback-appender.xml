@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<included xmlns="http://ch.qos.logback/xml/ns/logback"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback
+               https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd">
+    <!-- 控制台打印日志的相关配置 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 日志格式 -->
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DEBUG-FILE"
+              class="ch.qos.logback.core.FileAppender">
+        <encoder>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+        <file>${logPath}/debug/${appName}-debug.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+    <appender name="INFO-FILE"
+              class="ch.qos.logback.core.FileAppender">
+        <encoder>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+        <file>${logPath}/info/${appName}-info.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+    <appender name="ERROR-FILE"
+              class="ch.qos.logback.core.FileAppender">
+        <encoder>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+        <file>${logPath}/error/${appName}-error.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+
+<!--    <appender name="DEBUG-FILE"-->
+<!--              class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <encoder>-->
+<!--            <pattern>${logPattern}</pattern>-->
+<!--        </encoder>-->
+<!--        <file>${logPath}/debug/${appName}-debug.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${logPath}/debug/${appName}-debug.log.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>-->
+<!--            <maxFileSize>${maxFileSize}</maxFileSize>-->
+<!--            <maxHistory>${maxHistory}</maxHistory>-->
+<!--            <totalSizeCap>${totalSizeCap}</totalSizeCap>-->
+<!--        </rollingPolicy>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>DEBUG</level>-->
+<!--        </filter>-->
+<!--    </appender>-->
+<!--    <appender name="INFO-FILE"-->
+<!--              class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <encoder>-->
+<!--            <pattern>${logPattern}</pattern>-->
+<!--        </encoder>-->
+<!--        <file>${logPath}/info/${appName}-info.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${logPath}/info/${appName}-info.log.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>-->
+<!--            <maxFileSize>${maxFileSize}</maxFileSize>-->
+<!--            <maxHistory>${maxHistory}</maxHistory>-->
+<!--            <totalSizeCap>${totalSizeCap}</totalSizeCap>-->
+<!--        </rollingPolicy>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>INFO</level>-->
+<!--        </filter>-->
+<!--    </appender>-->
+<!--     <appender name="ERROR-FILE"-->
+<!--              class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <encoder>-->
+<!--            <pattern>${logPattern}</pattern>-->
+<!--        </encoder>-->
+<!--        <file>${logPath}/error/${appName}-error.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${logPath}/error/${appName}-error.log.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>-->
+<!--            <maxFileSize>${maxFileSize}</maxFileSize>-->
+<!--            <maxHistory>${maxHistory}</maxHistory>-->
+<!--            <totalSizeCap>${totalSizeCap}</totalSizeCap>-->
+<!--        </rollingPolicy>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>ERROR</level>-->
+<!--        </filter>-->
+<!--    </appender>-->
+</included>
