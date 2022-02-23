@@ -11,13 +11,13 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://192.168.110.21:8848
+        server-addr: http://192.168.110.86:8848
         heart-beat-interval: 1000
         namespace: 7d78bb36-3c05-4010-99ec-4b7f162d366e
         group: DEV_GROUP
         ephemeral: true
       config:
-        server-addr: http://192.168.110.21:8848
+        server-addr: http://192.168.110.86:8848
         enabled: true #false:会根据spring.profiles.active读取本地文件
         namespace: 7d78bb36-3c05-4010-99ec-4b7f162d366e
         extension-configs:
