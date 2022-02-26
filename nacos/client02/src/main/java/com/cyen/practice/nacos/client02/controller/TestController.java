@@ -1,6 +1,7 @@
 package com.cyen.practice.nacos.client02.controller;
 
 import com.cyen.practice.nacos.client02.client.Client01;
+import com.cyen.practice.nacos.client02.client.FormData;
 import com.cyen.practice.nacos.client02.client.UserDTO;
 import com.cyen.practice.nacos.client02.client.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,15 @@ public class TestController {
         info.setUserId(90L);
         info.setName("zhangsan");
 
-        return client01.testGet(userDTO, "20", info, "1111111111111111");
+        return client01.testGet(userDTO, "20", "1111111111111111");
+    }
+
+    @GetMapping("/form-data")
+    public String testFormData() {
+        FormData formData = new FormData();
+        formData.setName("zhangsan");
+        formData.setSex("2");
+        return client01.testPostFormData(formData);
+//        return client01.testPostFormData("zhangsan", "1");
     }
 }

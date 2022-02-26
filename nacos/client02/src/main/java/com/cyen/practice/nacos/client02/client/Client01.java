@@ -2,10 +2,8 @@ package com.cyen.practice.nacos.client02.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author qingshanpeng
@@ -17,6 +15,14 @@ public interface Client01 {
     @GetMapping("/test")
     String testGet(@SpringQueryMap UserDTO userDTO,
                    @RequestParam("age") String age,
-                   @SessionAttribute("userInfo") UserInfo userInfo,
                    @CookieValue("userId") String userId);
+
+//    @PostMapping(value = "/form-data", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    String testPostFormData(@RequestPartMap FormData formData);
+
+//    @PostMapping(value = "/form-data", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    String testPostFormData(@RequestPart("name") String name, @RequestPart("sex") String sex);
+
+    @PostMapping(value = "/form-data", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    String testPostFormData(FormData formData);
 }

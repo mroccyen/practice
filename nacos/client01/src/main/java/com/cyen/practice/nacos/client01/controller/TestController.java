@@ -2,6 +2,7 @@ package com.cyen.practice.nacos.client01.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,5 +30,10 @@ public class TestController {
         Object userId1 = session.getAttribute("userId");
         log.info("" + userId1);
         return "userId=" + userId + ",userInfo1=" + userInfo + ",userInfo2=" + name + sex + age;
+    }
+
+    @PostMapping("/form-data")
+    public String testPostFormData(FormData formData) {
+        return formData.toString();
     }
 }
