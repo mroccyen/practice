@@ -29,7 +29,7 @@ public class TestController {
         info.setUserId(90L);
         info.setName("zhangsan");
 
-        return client01.testGet(userDTO, "20", "1111111111111111");
+        return client01.testGet(userDTO, "20");
     }
 
     @GetMapping("/form-data")

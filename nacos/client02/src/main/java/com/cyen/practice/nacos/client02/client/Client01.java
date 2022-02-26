@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public interface Client01 {
     @GetMapping("/test")
     String testGet(@SpringQueryMap UserDTO userDTO,
-                   @RequestParam("age") String age,
-                   @CookieValue("userId") String userId);
+                   @RequestParam("age") String age);
 
 //    @PostMapping(value = "/form-data", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 //    String testPostFormData(@RequestPartMap FormData formData);
