@@ -1,13 +1,6 @@
-package com.cyen.practice.jdk_stream;
-
-import com.sun.org.apache.xerces.internal.impl.io.ASCIIReader;
-import com.sun.xml.internal.ws.util.ASCIIUtility;
-import sun.nio.cs.US_ASCII;
+package com.cyen.practice.algorithm;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author qingshanpeng
