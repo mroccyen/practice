@@ -24,6 +24,7 @@
         <module>antlr4</module>
         <module>nacos</module>
         <module>webflux</module>
+        <module>grpc</module>
     </modules>
 
     <dependencyManagement>
