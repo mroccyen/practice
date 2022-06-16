@@ -3,9 +3,12 @@ package com.cyen.practice.jdk_io;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * @author qingshanpeng
@@ -13,38 +16,55 @@ import java.nio.charset.StandardCharsets;
  * @since 标果工厂-小白杏
  */
 public class NIOServerSimple {
-	public static void main(String[] args) {
-		ByteBuffer buffer = ByteBuffer.allocate(1024);
-		try {
-			ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-			serverSocketChannel.bind(new InetSocketAddress(7777));
+    public static void main(String[] args) {
+        ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+        ByteBuffer writeBuff = ByteBuffer.allocate(1024);
+        try {
+            ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+            serverSocketChannel.bind(new InetSocketAddress(7777));
 
-			//设置为非阻塞
-			serverSocketChannel.configureBlocking(false);
+            //设置为非阻塞
+            serverSocketChannel.configureBlocking(false);
 
-			while (true) {
-				SocketChannel clientChannel = serverSocketChannel.accept();
-				//没有客户端连接
-				if (clientChannel == null) {
-					System.out.println("等待客户端连接...");
-					Thread.sleep(5000);
-				} else {
-					System.out.println("接收客户端连接...");
+            Selector selector = Selector.open();
+            serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
-					//切换模式
-					buffer.flip();
-					//从客户端读取数据
-					int read = clientChannel.read(buffer);
-					if (read != 0) {
-						String content = StandardCharsets.UTF_8.decode(buffer).toString();
-						System.out.println(content);
-					} else {
-						System.out.println("未收到客户端消息...");
-					}
-				}
-			}
-		} catch (IOException | InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
+            while (selector.select() > 0) {
+                Set<SelectionKey> selectionKeys = selector.selectedKeys();
+                Iterator<SelectionKey> iterator = selectionKeys.iterator();
+                while (iterator.hasNext()) {
+                    SelectionKey selectionKey = iterator.next();
+                    iterator.remove();
+                    if (selectionKey.isAcceptable()) {
+                        SocketChannel clientChannel = serverSocketChannel.accept();
+                        clientChannel.configureBlocking(false);
+                        System.out.println("接收客户端连接...");
+                        //注册读事件
+                        clientChannel.register(selector, SelectionKey.OP_READ);
+                    }
+                    if (selectionKey.isReadable()) {
+                        SocketChannel clientChannel = (SocketChannel) selectionKey.channel();
+                        //从客户端读取数据
+                        clientChannel.read(readBuffer);
+                        //切换模式
+                        readBuffer.flip();
+                        System.out.println("接收客户端数据 : " + new String(readBuffer.array()));
+                        selectionKey.interestOps(SelectionKey.OP_WRITE);
+
+                        readBuffer.clear();
+                    }
+                    if (selectionKey.isWritable()) {
+                        writeBuff.rewind();
+                        SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
+                        socketChannel.write(writeBuff);
+                        selectionKey.interestOps(SelectionKey.OP_READ);
+
+                        writeBuff.clear();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
