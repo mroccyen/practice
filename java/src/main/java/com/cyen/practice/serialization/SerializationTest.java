@@ -188,26 +188,27 @@ public class SerializationTest {
         System.out.println(readPerson);
     }
 
-    private static void protobufTest() throws IOException, ClassNotFoundException {
+    private static void protobufTest() throws IOException {
         PersonModel.Person.Builder builder = PersonModel.Person.newBuilder();
-        builder.setId(100);
-        builder.setName("jihite");
-        builder.setEmail("jihite@jihite.com");
+        builder.setName("namea");
+        builder.setUid("uida");
+        builder.setPwd("pwda");
 
         PersonModel.Person person = builder.build();
-        System.out.println("before:" + person);
+        System.out.println("before name: " + person.getName());
+        System.out.println("before uid: " + person.getUid());
+        System.out.println("before pwd: " + person.getPwd());
 
-        System.out.println("===Person Byte:");
+        System.out.println("===Person Byte===");
         for (byte b : person.toByteArray()) {
             System.out.print(b);
         }
-        System.out.println("================");
 
         byte[] byteArray = person.toByteArray();
         PersonModel.Person p2 = PersonModel.Person.parseFrom(byteArray);
-        System.out.println("after id:" + p2.getId());
-        System.out.println("after name:" + p2.getName());
-        System.out.println("after email:" + p2.getEmail());
+        System.out.println("after name: " + p2.getName());
+        System.out.println("after uid: " + p2.getUid());
+        System.out.println("after pwd: " + p2.getPwd());
 
         FileOutputStream fileOutputStream = new FileOutputStream("D:/protobuf-serialization.txt");
         fileOutputStream.write(byteArray);
@@ -215,9 +216,9 @@ public class SerializationTest {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Person person = new Person();
-        person.setUid("4321");
-        person.setName("feitian");
-        person.setPwd("1234");
+        person.setName("namea");
+        person.setUid("uida");
+        person.setPwd("pwda");
         jdkTest(person);
         kryoTest(person);
         hessianTest(person);

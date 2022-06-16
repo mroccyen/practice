@@ -4,7 +4,7 @@ option java_package = "com.cyen.practice.serialization.proto";
 option java_outer_classname = "PersonModel";
 
 message Person {
-    int32 id = 1;
-    string name = 2;
-    string email = 3;
+    string name = 1;
+    string uid = 2;
+    string pwd = 3;
 }
