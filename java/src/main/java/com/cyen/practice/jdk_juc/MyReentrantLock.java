@@ -1,4 +1,4 @@
-package com.cyen.practice.jdk_juc.aqs;
+package com.cyen.practice.jdk_juc;
 
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
