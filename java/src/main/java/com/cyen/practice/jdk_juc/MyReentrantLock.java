@@ -46,22 +46,24 @@ public class MyReentrantLock extends AbstractQueuedSynchronizer {
 
     static MyReentrantLock sysLock = new MyReentrantLock();
 
+    static int a = 0;
+
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1000; i++) {
             int finalI = i;
             new Thread(() -> {
                 sysLock.lock();
                 final int j = finalI;
                 try {
-                    Thread.sleep(10);
-                    System.out.println("this is " + j);
-                } catch (InterruptedException exception) {
-                    exception.printStackTrace();
+//                    System.out.println("this is " + j);
+                    a++;
                 } finally {
                     sysLock.unlock();
                 }
             }).start();
         }
         Thread.sleep(1000);
+
+        System.out.println(a);
     }
 }
