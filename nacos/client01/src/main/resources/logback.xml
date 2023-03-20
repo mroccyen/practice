@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration  xmlns="http://ch.qos.logback/xml/ns/logback"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback
+               https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd">
+    <include resource="logback-property.xml"/>
+    <include resource="logback-appender.xml"/>
+    <!-- 若是additivity设为true，则子Logger不止会在自己的appender里输出，还会在root的logger的appender里输出-->
+    <logger name="mybatis.sql" level="DEBUG" additivity="false">
+        <appender-ref ref="DEBUG-FILE"/>
+    </logger>
+
+    <root level="${logLevel}">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="DEBUG-FILE"/>
+        <appender-ref ref="INFO-FILE" />
+        <appender-ref ref="ERROR-FILE" />
+    </root>
+</configuration>

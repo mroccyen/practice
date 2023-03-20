@@ -1,0 +1,28 @@
+package com.cyen.practice.spring.tx_propagation_required;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * @author qingshanpeng
+ * @date 2021/8/3 10:08
+ * @since 标果工厂-脱骨李
+ */
+@Component
+public class A2 {
+	@Autowired
+	private B1 b1;
+
+	@Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED, isolation = Isolation.REPEATABLE_READ)
+	public void print1() throws Exception {
+		try {
+			System.out.println("this is a1 tx print1...");
+			b1.print1();
+		} catch (Throwable ex) {
+			ex.printStackTrace();
+		}
+	}
+}
