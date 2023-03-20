@@ -8,9 +8,8 @@ package com.cyen.practice.algorithm.sort;
  */
 public class QuickSort {
 
-    private static int partition(int[] arr, int left, int right) {
+    private static int partitionV1(int[] arr, int left, int right) {
         //版本1
-        /*
         int pivot = arr[left];
         int pivotIndex = left;
         while (left < right) {
@@ -23,7 +22,10 @@ public class QuickSort {
             swap(arr, left, right);
         }
         swap(arr, pivotIndex, left);
-        */
+        return left;
+    }
+
+    private static int partitionV2(int[] arr, int left, int right) {
         //版本2
         int pivot = arr[left];
         while (left < right) {
@@ -40,19 +42,19 @@ public class QuickSort {
         return left;
     }
 
-    private static void sort(int[] arr, int left, int right) {
-        if (left >= right) {
-            return;
-        }
-        int mid = partition(arr, left, right);
-        sort(arr, left, mid - 1);
-        sort(arr, mid + 1, right);
-    }
-
     private static void swap(int[] arr, int left, int right) {
         int t = arr[left];
         arr[left] = arr[right];
         arr[right] = t;
+    }
+
+    private static void sort(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int mid = partitionV2(arr, left, right);
+        sort(arr, left, mid - 1);
+        sort(arr, mid + 1, right);
     }
 
     private static void quickSort(int[] arr) {
