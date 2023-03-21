@@ -6,7 +6,7 @@ package com.cyen.practice.algorithm.sort;
  * @author qingsp
  * @date 2019-07-15
  */
-public class QuickSort {
+public class S04_QuickSort {
 
     private static int partitionV1(int[] arr, int left, int right) {
         //版本1

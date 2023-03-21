@@ -6,7 +6,7 @@ package com.cyen.practice.algorithm.sort;
  * @author qingsp
  * @date 2019-07-13 21:45
  */
-public class BubbleSort {
+public class S01_BubbleSort {
     private static void bubbleSort(int[] arr) {
         if (arr == null || arr.length == 0) {
             return;

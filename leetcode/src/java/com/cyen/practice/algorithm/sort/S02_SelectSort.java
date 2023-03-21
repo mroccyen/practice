@@ -6,7 +6,7 @@ package com.cyen.practice.algorithm.sort;
  * @author qingsp
  * @date 2019-07-13 21:54
  */
-public class SelectSort {
+public class S02_SelectSort {
     private static void selectSort(int[] arr) {
         if (arr == null || arr.length == 0) {
             return;

@@ -6,7 +6,7 @@ package com.cyen.practice.algorithm.sort;
  * @author qingsp
  * @date 2019-07-15
  */
-public class ShellSort {
+public class S07_ShellSort {
     private static void shellSort(int[] arr, int d) {
         if (d < 1) {
             return;

@@ -6,5 +6,5 @@ package com.cyen.practice.algorithm.sort;
  * @author qingsp
  * @date 2019-07-15
  */
-public class HeapSort {
+public class S05_HeapSort {
 }

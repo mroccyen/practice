@@ -6,7 +6,7 @@ package com.cyen.practice.algorithm.sort;
  * @author qingsp
  * @date 2019-07-13 22:05
  */
-public class InsertSort {
+public class S03_InsertSort {
     private static void insertSort(int[] arr) {
         if (arr == null || arr.length == 0) {
             return;
