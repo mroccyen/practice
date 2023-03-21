@@ -38,7 +38,10 @@ public class S06_MergeSort {
             j++;
             System.out.println(Arrays.toString(Arrays.stream(arrTmp).toArray()));
         }
-        System.arraycopy(arrTmp, 0, arr, 0, length);
+        int m = 0;
+        for (int k = low; k < high + 1; k++) {
+            arr[k] = arrTmp[m++];
+        }
     }
 
     private static void mergeSort(int[] arr, int low, int high) {
@@ -53,11 +56,15 @@ public class S06_MergeSort {
     public static void main(String[] args) {
         int[] arr = {3, 8, 4, 20, 7, 2, 1, 15, 12, 11, 18};
         mergeSort(arr, 0, arr.length - 1);
-//        int[] arr = {3, 4, 7, 8, 9, 10, 1, 2, 5, 11, 18};
-//        int mid = arr.length / 2;
-//        merge(arr, 0, mid, arr.length - 1);
         for (int a : arr) {
             System.out.println(a);
         }
+
+//        int[] arr = {3, 4, 7, 8, 9, 10, 1, 2, 5, 11, 18};
+//        int mid = arr.length / 2;
+//        merge(arr, 0, mid, arr.length - 1);
+//        for (int a : arr) {
+//            System.out.println(a);
+//        }
     }
 }
