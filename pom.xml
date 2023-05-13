@@ -25,6 +25,7 @@
         <module>nacos</module>
         <module>webflux</module>
         <module>grpc</module>
+        <module>football</module>
     </modules>
 
     <dependencyManagement>
