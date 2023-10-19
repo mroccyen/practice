@@ -30,6 +30,10 @@ public class FootballServiceImpl implements FootballService {
     public Map getBillRegion(Map param) throws Exception {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Type", "application/json");
+        httpHeaders.add("Referer", "https://servicewechat.com/wxffa42ecd6c0e693d/51/page-frame.html");
+        httpHeaders.add("Host", "fccdn1.k4n.cc");
+        CreateOrderVO createOrderVO = FetchController.FETCH_LOCAL.get();
+        httpHeaders.add("Authorization", createOrderVO.getAuthorization());
         Map map = sendReq("https://fccdn1.k4n.cc/fc/wx_api/v1/MiniApp/getBillRegion", HttpMethod.POST, httpHeaders, null, param, Map.class);
         return map;
     }
